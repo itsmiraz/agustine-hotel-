@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Book from "../Components/Book/Book";
 import Home from "../Components/Home/Home";
 import LoginPage from "../Components/LoginPage/LoginPage";
+import Others from "../Components/Other/Others";
 import RegisterPage from "../Components/RegisterPage/RegisterPage";
 import Rooms from "../Components/Rooms/Rooms";
 import RoomDetails from "../Components/Shared/RoomDetails/RoomDetails";
@@ -49,6 +50,10 @@ export const router = createBrowserRouter([
             {
                 path: '/user',
                 element: <PrivateRoute><UserPage></UserPage></PrivateRoute>
+            },
+            {
+                path: '/about',
+                element: <Others></Others>
             }
         ]
     }

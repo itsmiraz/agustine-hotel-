@@ -24,23 +24,27 @@ const Header = () => {
             <h1 className='text-3xl  z-50  font-bold'>AGUSTINE</h1>
 
             <div>
-                <ul className={`md:flex z-50 right-0 bg-slate-800 w-full text-white text-center justify-center md:static duration-300 ease-linear absolute ${open ? 'top-12' : 'top-[-200px]'}`}>
-                    <li className='font-semibold mr-4 '>
+                <ul className={`md:flex items-center  right-0 bg-slate-800 w-full text-white text-center justify-center md:static duration-300 ease-linear absolute ${open ? 'top-12' : 'top-[-200px]'}`}>
+                    <li className='font-semibold mr-4  mt-0'>
                         <Link to='/home'>Home</Link>
                     </li>
-                    <li className='font-semibold mr-4'>
+                    <li className='font-semibold mr-4  mt-0'>
                         <Link to='/rooms'>Rooms</Link>
                     </li>
+                    <li className='font-semibold mr-4  mt-0'>
+                        <Link to='/about'>About us</Link>
+                    </li>
+
 
                     {
                         user?.uid ?
                             <>
-                                <li className='font-semibold mr-4' >
+                                <li className='font-semibold ' >
                                     <span>{user.displayName ?
-                                        <div className='flex justify-center items-center mr-2'>
+                                        <span className='flex justify-center items-center mr-2'>
                                             <span>{user.displayName}</span>
                                             <Link to='/user'><img className='rounded-full mx-2' style={{ height: '30px' }} src={user.photoURL} alt="" /></Link>
-                                        </div>
+                                        </span>
                                         :
                                         <div className='flex justify-center items-center gap-2 mr-3'>
                                             <span>Anonymus</span>

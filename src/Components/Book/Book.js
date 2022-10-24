@@ -1,8 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import { useContext } from 'react';
 import ReactDatePicker from 'react-datepicker';
-import { AuthContext } from '../../Context/AuthContext/UserContext';
 import './Book.css'
 import "react-datepicker/dist/react-datepicker.css";
 import toast from 'react-hot-toast';
@@ -17,7 +15,6 @@ const Book = () => {
 
     const [checkindate, setcheckindate] = useState(null)
     const [checkOutDate, setCheckOutDate] = useState(null)
-    const [bookedRoom, SetBookedRoom] = useState([])
 
 
 

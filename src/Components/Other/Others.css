@@ -1,0 +1,9 @@
+#map {
+    width: 500px;
+}
+
+@media only screen and (max-width: 640px) {
+    #map {
+        width: 350px;
+    }
+}

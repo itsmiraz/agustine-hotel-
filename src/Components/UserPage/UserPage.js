@@ -27,11 +27,7 @@ const UserPage = () => {
 
     }
 
-    if (bookedRoom) {
 
-
-
-    }
 
 
 
