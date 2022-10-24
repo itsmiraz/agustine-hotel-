@@ -39,58 +39,59 @@ const Home = () => {
             </div>
 
             <div className='text-center grid grid-cols-1 md:grid-cols-3 p-4 md:p-10 bg-zinc-800 '>
-                <div>
-                    <h2 className='text-4xl font-semibold text-white my-4'>Our Facilities</h2>
-                    <div className=' my-10'>
-                        <div className='flex  items-center justify-center' >
-                            <FaCheck className='mx-2 text-white'></FaCheck><span className='font-semibold text-white text-2xl'>Airport Transfers</span>
-                        </div>
-                        <p className='text-gray-200'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore laboriosam neque ipsam, blanditiis sequi ducimus cum saepe corrupti quisquam, inventore quas repudiandae similique quaerat natus unde sapiente id? Officiis, impedit?</p>
-                    </div>
-                    <div className=' my-10'>
-                        <div className='flex  items-center justify-center' >
-                            <FaCheck className='mx-2 text-white'></FaCheck><span className='font-semibold text-white text-2xl'>Airport Transfers</span>
-                        </div>
-                        <p className='text-gray-200'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore laboriosam neque ipsam, blanditiis sequi ducimus cum saepe corrupti quisquam, inventore quas repudiandae similique quaerat natus unde sapiente id? Officiis, impedit?</p>
-                    </div>
-                    <div className=' my-10'>
-                        <div className='flex  items-center justify-center' >
-                            <FaCheck className='mx-2 text-white'></FaCheck><span className='font-semibold text-white text-2xl'>Airport Transfers</span>
-                        </div>
-                        <p className='text-gray-200'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore laboriosam neque ipsam, blanditiis sequi ducimus cum saepe corrupti quisquam, inventore quas repudiandae similique quaerat natus unde sapiente id? Officiis, impedit?</p>
-                    </div>
+                <div className='mt-10 md:mt-20' >
 
+                    <h2 className='text-4xl font-semibold text-white'>Our Facilites</h2>
+                    <p className="text-gray-400 my-4">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum aliquam suscipit assumenda minima magni necessitatibus, odit animi incidunt quaerat eos iusto temporibus non molestias nulla accusamus culpa sapiente saepe. Excepturi.
+                    </p>
+                    <div>
+                        <div className='font-semibold pl-28 md:pl-32 mb-5 '>
+                            <div className='flex  items-center'>
+                                <FaCheck></FaCheck><p className='px-2 text-white'>24/7 Customer Service</p>
+                            </div>
+                            <div className='flex  items-center'>
+                                <FaCheck></FaCheck><p className='px-2 text-white'>Rooftop Dinner</p>
+                            </div>
+                            <div className='flex  items-center'>
+                                <FaCheck></FaCheck><p className='px-2 text-white'>Air Condition</p>
+                            </div>
+                            <div className='flex  items-center'>
+                                <FaCheck></FaCheck><p className='px-2 text-white'>Rooftop Pool</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div className='flex justify-center'>
-                    <img src="https://augustine.qodeinteractive.com/wp-content/uploads/2020/11/h5-img3.png" alt="" />
+                    <img style={{ height: '500px' }} src="https://augustine.qodeinteractive.com/wp-content/uploads/2020/11/h5-img3.png" alt="" />
                 </div>
                 <div>
-                    <div>
+                    <div className='mt-20 '>
                         <h2 className='text-4xl font-semibold text-white my-4'>Our Services</h2>
-                        <div className=' my-10'>
-                            <div className='flex  items-center justify-center' >
-                                <FaCheck className='mx-2 text-white'></FaCheck><span className='font-semibold text-white text-2xl'>Airport Transfers</span>
-                            </div>
-                            <p className='text-gray-200'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore laboriosam neque ipsam, blanditiis sequi ducimus cum saepe corrupti quisquam, inventore quas repudiandae similique quaerat natus unde sapiente id? Officiis, impedit?</p>
+
+                        <div className=' my-5 '>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo saepe amet nulla, quod nihil quaerat magni aliquam, earum sed veniam nobis. Doloremque natus optio illum est harum quo, voluptas voluptatem excepturi</p>
                         </div>
-                        <div className=' my-10'>
-                            <div className='flex  items-center justify-center' >
-                                <FaCheck className='mx-2 text-white'></FaCheck><span className='font-semibold text-white text-2xl'>Airport Transfers</span>
+                        <div className='font-semibold pl-28 md:pl-32'>
+                            <div className='flex  items-center'>
+                                <FaCheck></FaCheck><p className='px-2 text-white'>24/7 Customer Service</p>
                             </div>
-                            <p className='text-gray-200'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore laboriosam neque ipsam, blanditiis sequi ducimus cum saepe corrupti quisquam, inventore quas repudiandae similique quaerat natus unde sapiente id? Officiis, impedit?</p>
-                        </div>
-                        <div className=' my-10'>
-                            <div className='flex  items-center justify-center' >
-                                <FaCheck className='mx-2 text-white'></FaCheck><span className='font-semibold text-white text-2xl'>Airport Transfers</span>
+                            <div className='flex  items-center'>
+                                <FaCheck></FaCheck><p className='px-2 text-white'>Rooftop Dinner</p>
                             </div>
-                            <p className='text-gray-200'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore laboriosam neque ipsam, blanditiis sequi ducimus cum saepe corrupti quisquam, inventore quas repudiandae similique quaerat natus unde sapiente id? Officiis, impedit?</p>
+                            <div className='flex  items-center'>
+                                <FaCheck></FaCheck><p className='px-2 text-white'>Air Condition</p>
+                            </div>
+                            <div className='flex  items-center'>
+                                <FaCheck></FaCheck><p className='px-2 text-white'>Rooftop Pool</p>
+                            </div>
                         </div>
 
                     </div>
                 </div>
             </div>
 
-        </div>
+        </div >
     );
 };
 

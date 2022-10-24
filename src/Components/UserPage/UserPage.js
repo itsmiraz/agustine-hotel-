@@ -3,7 +3,9 @@ import { useContext } from 'react';
 import { AuthContext } from '../../Context/AuthContext/UserContext';
 
 const UserPage = () => {
-
+    const handleCancelButton = () => {
+        localStorage.removeItem('bookedRomm')
+    }
     const { user } = useContext(AuthContext)
     const data = localStorage.getItem('bookedRomm')
     const bookedRoom = JSON.parse(data)
@@ -31,9 +33,7 @@ const UserPage = () => {
 
 
 
-    const handleCancelButton = () => {
-        localStorage.removeItem('bookedRomm')
-    }
+
 
     return (
         <div className='bg-slate-800 py-20 flex md:flex-row flex-col justify-around'>
