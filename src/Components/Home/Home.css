@@ -1,0 +1,20 @@
+.home {
+    height: 100vh;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    top: 20px;
+    width: 100%;
+
+    background-image: url('../../assests/backgournd-img-edit.jpg');
+}
+
+@media only screen and (max-width: 768px) {
+    .home {
+        background-position: center;
+        background-size: cover;
+        background-attachment: none;
+        width: 100%;
+        height: 100%;
+    }
+}

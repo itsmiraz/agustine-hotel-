@@ -1,0 +1,21 @@
+.calender {
+    padding: 5px;
+    width: 300px;
+    background-color: white;
+    border-radius: 5px;
+    color: rgb(44, 44, 44);
+    font-weight: 500;
+}
+
+.calender .react-calendar__month-view__weekdays__weekday {
+    background-color: slategray;
+
+
+    margin-bottom: 5px;
+}
+
+.calender button:hover {
+    border-radius: 5px;
+
+    background-color: coral;
+}
