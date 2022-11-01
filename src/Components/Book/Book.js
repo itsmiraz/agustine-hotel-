@@ -11,7 +11,7 @@ const Book = () => {
     const data = localStorage.getItem('room-detail')
     const roomDetails = JSON.parse(data)
     console.log("🚀 ~ file: Book.js ~ line 7 ~ Book ~ roomDetails", roomDetails)
-    const { image_url, details, price, title, _id } = roomDetails
+    const { image, des, price, name, _id } = roomDetails
 
     const [checkindate, setcheckindate] = useState(null)
     const [checkOutDate, setCheckOutDate] = useState(null)
@@ -30,18 +30,18 @@ const Book = () => {
     }
 
     return (
-        <div className='bg-slate-900 p-20 '>
+        <div className='bg-slate-900 p-5 md:p-20 '>
 
-            <div className='flex justify-center'>
+            <div className='flex flex-col md:flex-row justfy-start md:justify-center'>
                 <div>
-                    <img style={{ width: '500px' }} className='rounded-lg' src={image_url} alt="" />
+                    <img style={{ width: '500px' }} className='rounded-lg' src={image} alt="" />
                     <div>
-                        <h2 className="text-3xl text-gray-200 font-bold">{title}</h2>
-                        <p className='text-gray-400 w-80'>{details}</p>
+                        <h2 className="text-3xl text-gray-200 font-bold">{name}</h2>
+                        <p className='text-gray-400 w-80'>{des}</p>
                         <p className='font-semibold text-white'>Price:${price}</p>
                     </div>
                 </div>
-                <div className=' px-10'>
+                <div className='px-2 md:px-10'>
 
                     <h2 className='text-3xl font-bold'>Book Your Room</h2>
                     <div className=' justify-around'>

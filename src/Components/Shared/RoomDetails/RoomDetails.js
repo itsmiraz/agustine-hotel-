@@ -5,8 +5,7 @@ import { AuthContext } from '../../../Context/AuthContext/UserContext';
 
 const RoomDetails = () => {
     const Roomdetails = useLoaderData()
-    const { image_url, pepople
-        , price, title } = Roomdetails;
+    const { image, capacity, price, name, des } = Roomdetails;
     console.log("🚀 ~ file: RoomDetails.js ~ line 9 ~ RoomDetails ~ Roomdetails", Roomdetails)
     const { setRoomDetails } = useContext(AuthContext)
 
@@ -19,15 +18,14 @@ const RoomDetails = () => {
 
                 <div className="space-y-3 grid grid-cols-1 md:grid-cols-2">
                     <div className='mr-4'>
-                        <img alt='img' className='rounded' src={image_url} />
+                        <img alt='img' className='rounded' src={image} />
 
                     </div>
                     <div className="space-y-2">
 
-                        <h3 className="text-4xl font-semibold text-violet-400">{title}</h3>
+                        <h3 className="text-4xl font-semibold text-violet-400">{name}</h3>
 
-                        <p className="leading-snug text-gray-400">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam omnis sed dolore iste magni, debitis itaque? Ipsa distinctio cum nostrum aliquid eveniet repellat
-                            t. Odit aut voluptatum, eum ea aperiam unde laborum veniam fuga culpa explicabo . </p>
+                        <p className="leading-snug text-gray-400">{des} </p>
 
                         <div>
                             <div className='my-2'>
@@ -36,7 +34,7 @@ const RoomDetails = () => {
                                 <span className='flex text-gray-400 items-center'><FaCheck></FaCheck>SPA service</span>
                             </div>
                             <div>
-                                <p className='font-semibold'>Capacity:{pepople}</p>
+                                <p className='font-semibold'>Capacity:{capacity}</p>
                                 <p className='font-semibold'>Price:${price}</p>
                             </div>
                         </div>

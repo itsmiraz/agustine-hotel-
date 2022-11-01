@@ -15,7 +15,7 @@ const UserPage = () => {
 
     if (bookedRoom) {
 
-        const { image_url, title, price } = bookedRoom.room
+        const { image, title, price } = bookedRoom.room
 
 
 
@@ -72,7 +72,7 @@ const UserPage = () => {
                         <>
                             <div className='flex items-center md:flex-row flex-col bg-gray-200 p-2 rounded-lg text-gray-700 font-semibold'>
                                 <img className='md:w-32 w-10  rounded-lg' src={bookedRoom ?
-                                    bookedRoom.room.image_url
+                                    bookedRoom.room.image
 
                                     :
                                     <></>
