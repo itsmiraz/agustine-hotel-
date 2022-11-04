@@ -9,20 +9,29 @@ import BookedRoomCard from './bookedRoomCard/BookedRoomCard';
 
 const UserPage = () => {
 
-    const { user } = useContext(AuthContext)
+    const { user, logOut } = useContext(AuthContext)
     const [bookedRomm, setbookedRoom] = useState([])
 
     useEffect(() => {
-        fetch(`http://localhost:5000/orders?email=${user.email}`)
-            .then(res => res.json())
+        fetch(`http://localhost:5000/orders?email=${user.email}`, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('agustineToken')}`
+            }
+        })
+            .then(res => {
+
+                if (res.status === 401 || res.status === 403) {
+                    return logOut()
+                }
+                return res.json()
+            })
             .then(data => {
                 console.log('database', data);
                 setbookedRoom(data)
             })
-    }, [user.email])
+    }, [user.email, logOut])
 
     const handleCancelBook = id => {
-        console.log(id);
         fetch(`http://localhost:5000/orders/${id}`, {
             method: 'DELETE',
         })

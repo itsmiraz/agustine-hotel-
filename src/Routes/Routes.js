@@ -34,7 +34,6 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/rooms',
-                loader: () => fetch('https://hotel-web-server.vercel.app/room'),
                 element: <Rooms></Rooms>
             },
             {

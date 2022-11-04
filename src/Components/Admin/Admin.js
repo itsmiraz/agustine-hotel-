@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import toast from 'react-hot-toast';
 import RoomSmallCard from './RoomCard/RoomSmallCard';
 
 const Admin = () => {
@@ -41,7 +42,7 @@ const Admin = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.acknowledged) {
-                    alert('Room Added SuccessFully')
+                    toast.success('Room Added Success Fully')
                     form.reset()
                 }
             })
@@ -60,7 +61,7 @@ const Admin = () => {
                 .then(data => {
                     console.log(data);
                     if (data.deletedCount >= 0) {
-                        alert('User deleted Succsse Fully')
+                        toast.error('Room Deleted Success Fully')
                         const remainingUser = rooms
                             .filter(us => us._id !== room._id)
                         setRooms(remainingUser)
@@ -94,12 +95,12 @@ const Admin = () => {
                 <div className='px-20'>
                     <h1 className='text-center text-3xl my-4 font-bold'>Add a new Room</h1>
                     <form onSubmit={handleForm} className='p-30 flex flex-col  bg-slate-900  '>
-                        <input name='title' id="username" type="text" placeholder='Room Title' className="flex items-center h-12 px-4 mt-2 rounded focus:outline-none focus:ring-2 dark:text-gray-900 focus:dark:border-violet-400 focus:ring-violet-400" />
-                        <textarea name='des' id="username" type="text" placeholder='Room Des' className="flex items-center h-12 px-4 mt-2 rounded focus:outline-none focus:ring-2 dark:text-gray-900 focus:dark:border-violet-400 focus:ring-violet-400" />
-                        <input name='price' id="username" type="number" placeholder='Room Price' className="flex items-center h-12 px-4 mt-2 rounded focus:outline-none focus:ring-2 dark:text-gray-900 focus:dark:border-violet-400 focus:ring-violet-400" />
-                        <input name='capacity' id="username" type="text" placeholder='Room Capcity' className="flex items-center h-12 px-4 mt-2 rounded focus:outline-none focus:ring-2 dark:text-gray-900 focus:dark:border-violet-400 focus:ring-violet-400" />
-                        <input name='url' id="username" type="text" placeholder='Room Photo URL' className="flex items-center h-12 px-4 mt-2 rounded focus:outline-none focus:ring-2 dark:text-gray-900 focus:dark:border-violet-400 focus:ring-violet-400" />
-                        <button type="submit" className="px-8 py-3 my-4 font-semibold rounded dark:bg-gray-400 dark:text-gray-800">Upload</button>
+                        <input name='title' id="username" type="text" placeholder='Room Title' className="flex items-center h-12 px-4 mt-2 rounded focus:outline-none focus:ring-2 text-gray-900 focus:border-violet-400 focus:ring-violet-400" />
+                        <textarea name='des' id="username" type="text" placeholder='Room Details' className="flex items-center h-24 p-4 mt-2 rounded focus:outline-none focus:ring-2 text-gray-900 focus:border-violet-400 focus:ring-violet-400" />
+                        <input name='price' id="username" type="number" placeholder='Room Price' className="flex items-center h-12 px-4 mt-2 rounded focus:outline-none focus:ring-2 text-gray-900 focus:border-violet-400 focus:ring-violet-400" />
+                        <input name='capacity' id="username" type="text" placeholder='Room Capcity' className="flex items-center h-12 px-4 mt-2 rounded focus:outline-none focus:ring-2 text-gray-900 focus:border-violet-400 focus:ring-violet-400" />
+                        <input name='url' id="username" type="text" placeholder='Room Photo URL' className="flex items-center h-12 px-4 mt-2 rounded focus:outline-none focus:ring-2 text-gray-900 focus:border-violet-400 focus:ring-violet-400" />
+                        <button type="submit" className="px-8 py-3 my-4 font-semibold rounded bg-gray-400 text-gray-800">Upload</button>
                     </form>
                 </div>
             </div>

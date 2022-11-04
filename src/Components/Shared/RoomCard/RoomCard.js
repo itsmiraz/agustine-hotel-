@@ -3,8 +3,6 @@ import { FaStar } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 const RoomCard = (props) => {
-    // const { setRoomDetails } = useContext(AuthContext)
-
     const handleClick = () => {
         const roomDetail = (props.room)
         localStorage.setItem('room-detail', JSON.stringify(roomDetail))

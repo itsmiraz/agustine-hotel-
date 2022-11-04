@@ -25,10 +25,24 @@ const LoginPage = () => {
                 form.reset()
                 toast.success('Logined SuccessFully')
 
-                setTimeout(() => {
-                    navigate(from, { replace: true })
+                fetch('http://localhost:5000/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(user)
+                })
+                    .then(res => res.json)
+                    .then(data => {
+                        console.log(data.token);
 
-                }, 1500);
+                        setTimeout(() => {
+                            navigate(from, { replace: true })
+
+                        }, 500);
+                    })
+
+
             })
             .catch(error => {
                 if (error.message === 'Firebase: Error (auth/wrong-password).') {
@@ -43,11 +57,29 @@ const LoginPage = () => {
         googleSginIn()
             .then(result => {
                 const user = result.user;
-                setTimeout(() => {
-                    navigate(from, { replace: true })
+                const currentUser = {
+                    email: user.email
+                }
+                console.log(currentUser);
+                fetch('http://localhost:5000/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        localStorage.setItem('agustineToken', data.token)
+                        setTimeout(() => {
+                            navigate(from, { replace: true })
 
-                }, 500);
-                console.log(user);
+                        }, 500);
+
+                    })
+
+
             })
             .catch(error => {
                 console.log('error', error);
@@ -59,11 +91,11 @@ const LoginPage = () => {
                 <h1 className="text-2xl font-bold text-center">Login</h1>
                 <form onSubmit={handleSubmit} noValidate="" action="" className="space-y-6 ng-untouched ng-pristine ng-valid">
                     <div className="space-y-1 text-sm">
-                        <label htmlhtmlFor="email" className="block text-gray-400">Email</label>
+                        <label htmlFor="email" className="block text-gray-400">Email</label>
                         <input type="text" name="email" id="username" placeholder="Email" className="w-full px-4 py-3 rounded-md border-gray-700 bg-gray-900 text-gray-100 focus:border-violet-400" />
                     </div>
                     <div className="space-y-1 text-sm">
-                        <label htmlhtmlFor="password" className="block text-gray-400">Password</label>
+                        <label htmlFor="password" className="block text-gray-400">Password</label>
                         <input type="password" name="password" id="password" placeholder="Password" className="w-full px-4 py-3 rounded-md border-gray-700 bg-gray-900 text-gray-100 focus:border-violet-400" />
                         <div className="flex justify-end text-xs text-gray-400">
                             <a rel="noopener noreferrer" href="/">Forgot Password?</a>
