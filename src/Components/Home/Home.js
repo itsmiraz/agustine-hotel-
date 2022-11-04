@@ -4,7 +4,7 @@ import { FaCheck } from "react-icons/fa";
 import { Link, useLoaderData } from 'react-router-dom';
 import RoomCard from '../Shared/RoomCard/RoomCard';
 const Home = () => {
-    const rooms = useLoaderData()
+    const { rooms } = useLoaderData()
 
     const threeRooms = rooms.slice(0, 3)
 

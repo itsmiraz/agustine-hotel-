@@ -15,7 +15,7 @@ const Rooms = () => {
 
     const pages = Math.ceil(count / size);
     useEffect(() => {
-        const url = `http://localhost:5000/room?page=${page}&size=${size}`
+        const url = `https://hotel-web-server.vercel.app/room?page=${page}&size=${size}`
         fetch(url)
             .then(res => res.json())
             .then(data => {

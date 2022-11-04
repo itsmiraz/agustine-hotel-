@@ -11,7 +11,7 @@ const Admin = () => {
     useEffect(() => {
         fetch('https://hotel-web-server.vercel.app/room')
             .then(res => res.json())
-            .then(data => setRooms(data))
+            .then(data => setRooms(data.rooms))
     }, [rooms])
 
     const handleForm = e => {

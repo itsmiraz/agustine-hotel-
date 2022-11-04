@@ -13,7 +13,7 @@ const UserPage = () => {
     const [bookedRomm, setbookedRoom] = useState([])
 
     useEffect(() => {
-        fetch(`http://localhost:5000/orders?email=${user.email}`, {
+        fetch(`https://hotel-web-server.vercel.app/orders?email=${user.email}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('agustineToken')}`
             }
@@ -32,7 +32,7 @@ const UserPage = () => {
     }, [user.email, logOut])
 
     const handleCancelBook = id => {
-        fetch(`http://localhost:5000/orders/${id}`, {
+        fetch(`https://hotel-web-server.vercel.app/orders/${id}`, {
             method: 'DELETE',
         })
             .then(res => res.json())

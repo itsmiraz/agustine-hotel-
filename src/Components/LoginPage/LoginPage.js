@@ -25,7 +25,7 @@ const LoginPage = () => {
                 form.reset()
                 toast.success('Logined SuccessFully')
 
-                fetch('http://localhost:5000/jwt', {
+                fetch('https://hotel-web-server.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -61,7 +61,7 @@ const LoginPage = () => {
                     email: user.email
                 }
                 console.log(currentUser);
-                fetch('http://localhost:5000/jwt', {
+                fetch('https://hotel-web-server.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
