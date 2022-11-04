@@ -1,42 +1,43 @@
 import React from 'react';
+import { useEffect } from 'react';
+import { useState } from 'react';
 import { useContext } from 'react';
+import toast from 'react-hot-toast';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthContext/UserContext';
+import BookedRoomCard from './bookedRoomCard/BookedRoomCard';
 
 const UserPage = () => {
-    const handleCancelButton = () => {
-        localStorage.removeItem('bookedRomm')
-    }
+
     const { user } = useContext(AuthContext)
-    const data = localStorage.getItem('bookedRomm')
-    const bookedRoom = JSON.parse(data)
+    const [bookedRomm, setbookedRoom] = useState([])
 
-    let total;
+    useEffect(() => {
+        fetch(`http://localhost:5000/orders?email=${user.email}`)
+            .then(res => res.json())
+            .then(data => {
+                console.log('database', data);
+                setbookedRoom(data)
+            })
+    }, [user.email])
 
-
-    if (bookedRoom) {
-
-        const { image, title, price } = bookedRoom.room
-
-
-
-        const chek1 = parseFloat(bookedRoom.checkin.slice(8, 10))
-
-        const chek2 = parseFloat(bookedRoom.checkout.slice(8, 10))
-        const totalDate = chek2 - chek1;
-        const TotalBill = price * totalDate;
-        total = TotalBill
-
-
+    const handleCancelBook = id => {
+        console.log(id);
+        fetch(`http://localhost:5000/orders/${id}`, {
+            method: 'DELETE',
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.deletedCount > 0)
+                    toast.error('You successFully Canceled Your Book')
+                const remainingBooking = bookedRomm.filter(room => room._id !== id)
+                setbookedRoom(remainingBooking)
+            })
     }
-
-
-
-
-
-
 
     return (
-        <div className='bg-slate-800 py-20 flex md:flex-row flex-col justify-around'>
+        <div className='bg-slate-800 py-10 flex md:flex-row flex-col justify-around'>
             <div className=' text-center  pb-20 z-0 drop-shadow-lg p-5'>
                 <h3 className='text-3xl text-gray-200 my-4 font-bold'> Your Information</h3>
 
@@ -65,55 +66,33 @@ const UserPage = () => {
                 </div>
 
             </div>
-            <div className=' text-center bg-gray-900 rounded-lg mt-10  z-0 drop-shadow-lg p-5'>
+            <div className=' text-center bg-gray-900 rounded-lg   z-0 drop-shadow-lg p-5'>
                 <h3 className='text-3xl text-gray-200 font-bold my-4'> Your Booking</h3>
                 {
-                    bookedRoom ?
-                        <>
-                            <div className='flex items-center md:flex-row flex-col bg-gray-200 p-2 rounded-lg text-gray-700 font-semibold'>
-                                <img className='md:w-32 w-10  rounded-lg' src={bookedRoom ?
-                                    bookedRoom.room.image
+                    bookedRomm.length === 0 ?
 
-                                    :
-                                    <></>
-                                } alt="" />
-                                <div className='text-start pl-2'>
-                                    <h3 className='text-xl'>{bookedRoom ?
-                                        <span>{bookedRoom.room.title}</span>
-                                        :
-                                        <></>
-                                    }</h3>
-                                    <p>Price:${bookedRoom ?
-                                        <span>{bookedRoom.room.price}</span>
-                                        :
-                                        <></>
-                                    }</p>
-                                </div>
-                                <div className='px-4'>
-                                    Check In:
-                                    <h2>
-                                        {bookedRoom.checkin.slice(0, 10)}
-                                    </h2>
-                                </div>
-                                <div className='px-4'>
-                                    Check Out:
-                                    <h2>
-                                        {bookedRoom.checkout.slice(0, 10)}
-                                    </h2>
-                                </div>
-                                <div className='px-4'>
-                                    Total Bill Will Be
-                                    <h3>{total}</h3>
-                                </div>
-                                <div>
-                                    <button onClick={handleCancelButton} type="button" className="px-2 py-1 font-semibold border rounded bg-slate-800 border-gray-100 text-gray-100">Cancel Book</button>
-                                </div>
-                            </div>
-                        </>
 
+                        <div className='text-center'>
+                            <h1>You Have not any booked Room Yet.</h1>
+                            <p>Book a <Link className='underline' to='/rooms'>Room?</Link></p>
+                        </div>
                         :
-                        <><h1>You have not any booked room yet</h1></>
+                        <>
+                            {
+                                bookedRomm.map(booked => <BookedRoomCard
+
+                                    key={booked._id}
+                                    booked={booked}
+                                    handleCancelBook={handleCancelBook}
+                                ></BookedRoomCard>)
+                            }
+
+                        </>
                 }
+
+
+
+
             </div>
         </div>
     );

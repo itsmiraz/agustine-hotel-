@@ -1,11 +1,11 @@
 import React from 'react';
 import toast from 'react-hot-toast';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData, useNavigate } from 'react-router-dom';
 
 const EditRoomDetails = () => {
     const data = useLoaderData()
     const { name, price, image, capacity, des, _id } = data
-
+    const navigate = useNavigate()
 
     const handleSubmit = e => {
         e.preventDefault()
@@ -27,6 +27,7 @@ const EditRoomDetails = () => {
             .then(res => res.json())
             .then(data => {
                 toast.success('Edited Success Fully')
+                navigate('/admin')
             })
     }
     return (

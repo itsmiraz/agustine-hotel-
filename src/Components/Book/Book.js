@@ -5,12 +5,15 @@ import './Book.css'
 import "react-datepicker/dist/react-datepicker.css";
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from '../../Context/AuthContext/UserContext';
 
 
 const Book = () => {
+    const { user } = useContext(AuthContext)
+    console.log(user.email);
     const data = localStorage.getItem('room-detail')
     const roomDetails = JSON.parse(data)
-    console.log("🚀 ~ file: Book.js ~ line 7 ~ Book ~ roomDetails", roomDetails)
     const { image, des, price, name, _id } = roomDetails
 
     const [checkindate, setcheckindate] = useState(null)
@@ -22,11 +25,24 @@ const Book = () => {
         const bookedRoomData = {
             checkin: checkindate,
             checkout: checkOutDate,
+            email: user.email,
             room: roomDetails,
         }
+        fetch('http://localhost:5000/orders', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(bookedRoomData)
 
-        localStorage.setItem('bookedRomm', JSON.stringify(bookedRoomData))
-        toast.success('Your Room has been Booked Please Check Your Email')
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                toast.success('Your Room has been Booked Please Check Your Email')
+            })
+
+        // localStorage.setItem('bookedRomm', JSON.stringify(bookedRoomData))
     }
 
     return (
@@ -74,7 +90,7 @@ const Book = () => {
 
                     </div>
                     <Link to='/home'>
-                        <button onClick={() => handleClick(_id)} type="button" className="px-8 py-3  my-4 font-semibold border rounded hover:bg-slate-50 hover:text-gray-800 border-gray-100 text-gray-100">Confirm Book</button>
+                        <button type="button" onClick={() => handleClick(_id)} className="px-8 py-3  my-4 font-semibold border rounded hover:bg-slate-50 hover:text-gray-800 border-gray-100 text-gray-100">Confirm Book</button>
 
                     </Link>
                 </div>
