@@ -25,13 +25,13 @@ const Header = () => {
 
             <div>
                 <ul className={`md:flex items-center  right-0 bg-slate-800 w-full text-white text-center justify-center md:static duration-300 ease-linear absolute ${open ? 'top-12' : 'top-[-200px]'}`}>
-                    <li className='font-semibold mr-4  mt-0'>
+                    <li onClick={() => setOpen(!open)} className='font-semibold mr-4  mt-0'>
                         <Link to='/home'>Home</Link>
                     </li>
-                    <li className='font-semibold mr-4  mt-0'>
+                    <li onClick={() => setOpen(!open)} className='font-semibold mr-4  mt-0'>
                         <Link to='/rooms'>Rooms</Link>
                     </li>
-                    <li className='font-semibold mr-4  mt-0'>
+                    <li onClick={() => setOpen(!open)} className='font-semibold mr-4  mt-0'>
                         <Link to='/about'>About us</Link>
                     </li>
 
@@ -39,20 +39,20 @@ const Header = () => {
                     {
                         user?.uid ?
                             <>
-                                <li className='font-semibold ' >
+                                <li onClick={() => setOpen(!open)} className='font-semibold ' >
                                     <span>{user.displayName ?
                                         <span className='flex justify-center items-center mr-2'>
                                             <span>{user.displayName}</span>
-                                            <Link to='/user'><img className='rounded-full mx-2' style={{ height: '30px' }} src={user.photoURL} alt="" /></Link>
+                                            <Link to='/dashboard/userDetail'><img className='rounded-full mx-2' style={{ height: '30px' }} src={user.photoURL} alt="" /></Link>
                                         </span>
                                         :
                                         <div className='flex justify-center items-center gap-2 mr-3'>
                                             <span>Anonymus</span>
-                                            <FaUser></FaUser>
+                                           <Link to='/dashboard/userDetail'> <FaUser></FaUser></Link>
                                         </div>
                                     }</span>
                                 </li>
-                                <li className='font-semibold mr-4'>
+                                <li onClick={() => setOpen(!open)} className='font-semibold mr-4'>
                                     <Link ><button onClick={handleLogOut} className="px-2 py-1 md:my-0 my-2 font-semibold rounded-full z-10 bg-gray-100 text-gray-800">Log Out</button></Link>
 
                                 </li>
@@ -60,10 +60,10 @@ const Header = () => {
                             </>
                             :
                             <>
-                                <li>
+                                <li onClick={() => setOpen(!open)}>
                                     <Link to='/login'><button className="px-3 py-1 md:my-0 mt-2 font-semibold rounded-full border text-white mr-2">Sign In</button></Link>
-                                </li>
-                                <li>
+                                </li >
+                                <li onClick={() => setOpen(!open)}>
                                     <Link to='/register'><button className="px-3 py-1 md:my-0 my-2 font-semibold rounded-full bg-red-500 text-white">Sign Up</button></Link>
                                 </li>
                             </>
@@ -74,6 +74,7 @@ const Header = () => {
                     {open ? <XMarkIcon />
                         : <Bars3Icon />
                     }
+                    
                 </div>
             </div>
         </div >

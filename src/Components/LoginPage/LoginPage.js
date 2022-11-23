@@ -24,24 +24,7 @@ const LoginPage = () => {
                 console.log(user);
                 form.reset()
                 toast.success('Logined SuccessFully')
-
-                fetch('https://hotel-web-server.vercel.app/jwt', {
-                    method: 'POST',
-                    headers: {
-                        'content-type': 'application/json'
-                    },
-                    body: JSON.stringify(user)
-                })
-                    .then(res => res.json)
-                    .then(data => {
-                        console.log(data.token);
-
-                        setTimeout(() => {
-                            navigate(from, { replace: true })
-
-                        }, 500);
-                    })
-
+                    saveUser(user.displayName,user.email)
 
             })
             .catch(error => {
@@ -61,23 +44,9 @@ const LoginPage = () => {
                     email: user.email
                 }
                 console.log(currentUser);
-                fetch('https://hotel-web-server.vercel.app/jwt', {
-                    method: 'POST',
-                    headers: {
-                        'content-type': 'application/json'
-                    },
-                    body: JSON.stringify(currentUser)
-                })
-                    .then(res => res.json())
-                    .then(data => {
-                        console.log(data);
-                        localStorage.setItem('agustineToken', data.token)
-                        setTimeout(() => {
-                            navigate(from, { replace: true })
-
-                        }, 500);
-
-                    })
+                console.log(user)
+                saveUser(user.displayName,user.email)
+                
 
 
             })
@@ -85,6 +54,35 @@ const LoginPage = () => {
                 console.log('error', error);
             })
     }
+
+
+    const saveUser = (name, email) => {
+        console.log(name, email)
+        const user = {
+            name,
+            email
+        }
+        fetch(`http://localhost:5000/user/${email}`, {
+            method: 'PUT',
+            headers: {
+                'content-type':'application/json'
+            },
+            body:JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    console.log(data);
+                    localStorage.setItem('agustineToken', data.data)
+                        setTimeout(() => {
+                            navigate(from, { replace: true })
+
+                        }, 300);
+                }
+        })
+    }
+
+
     return (
         <div className='flex md:px-0 px-5 justify-center bg-slate-900'>
             <div className="w-full max-w-md p-8 space-y-3 shadow-lg my-10 rounded-xl bg-gray-800 text-gray-100">

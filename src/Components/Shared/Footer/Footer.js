@@ -17,7 +17,7 @@ const Footer = () => {
                     <a href='/' className="link link-hover text-gray-300">About us</a>
                     <a href='/' className="link link-hover text-gray-300">Contact</a>
                     <a href='/' className="link link-hover text-gray-300">Jobs</a>
-                    <Link to='/admin' className="link link-hover text-gray-300">Admin</Link>
+                    <Link to='/verifyAdmin' className="link link-hover text-gray-300">Admin</Link>
                 </div>
                 <div>
                     <span className="footer-title">Social</span>

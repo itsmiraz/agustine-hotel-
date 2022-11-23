@@ -28,7 +28,7 @@ const Book = () => {
             email: user.email,
             room: roomDetails,
         }
-        fetch('https://hotel-web-server.vercel.app/orders', {
+        fetch('http://localhost:5000/orders', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
