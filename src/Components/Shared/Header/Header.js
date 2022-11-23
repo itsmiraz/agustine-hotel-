@@ -21,7 +21,7 @@ const Header = () => {
     return (
         <div className=' bg-slate-800 sticky top-0 z-50 drop-shadow-lg text-white items-center md:px-10 px-4 py-3 flex justify-between w-full'>
 
-            <h1 className='text-3xl  z-50  font-bold'>AGUSTINE</h1>
+          <Link to='/'>  <h1 className='text-3xl  z-50  font-bold'>AGUSTINE</h1></Link>
 
             <div>
                 <ul className={`md:flex items-center  right-0 bg-slate-800 w-full text-white text-center justify-center md:static duration-300 ease-linear absolute ${open ? 'top-12' : 'top-[-200px]'}`}>

@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Admin from "../Components/Admin/Admin";
 import EditRoomDetails from "../Components/Admin/EditRoomDetails/EditRoomDetails";
 import Book from "../Components/Book/Book";
+import Payment from "../Components/Book/Payment";
 import AddNewRoom from "../Components/Dashboard/AddNewRoom";
 import AllRooms from "../Components/Dashboard/AllRooms";
 import Allusers from "../Components/Dashboard/Allusers";
@@ -68,6 +69,11 @@ export const router = createBrowserRouter([
                 path: '/admin',
 
                 element: <Admin></Admin>
+            },
+            {
+                path: '/payment/:id',
+                loader:({params})=>fetch(`http://localhost:5000/room/${params.id}`),
+                element:<PrivateRoute><Payment></Payment></PrivateRoute>
             },
             {
                 path: '/roomdetails/:id',

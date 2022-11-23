@@ -7,10 +7,15 @@ import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../../Context/AuthContext/UserContext';
+import { Elements } from '@stripe/react-stripe-js';
+import CheckOutForm from './CheckOutForm';
+import { loadStripe } from '@stripe/stripe-js';
 
 
 const Book = () => {
     const { user } = useContext(AuthContext)
+    const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PK);
+
     console.log(user.email);
     const data = localStorage.getItem('room-detail')
     const roomDetails = JSON.parse(data)
@@ -28,19 +33,19 @@ const Book = () => {
             email: user.email,
             room: roomDetails,
         }
-        fetch('http://localhost:5000/orders', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(bookedRoomData)
+        // fetch('http://localhost:5000/orders', {
+        //     method: 'POST',
+        //     headers: {
+        //         'content-type': 'application/json'
+        //     },
+        //     body: JSON.stringify(bookedRoomData)
 
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                toast.success('Your Room has been Booked Please Check Your Email')
-            })
+        // })
+        //     .then(res => res.json())
+        //     .then(data => {
+        //         console.log(data);
+        //         toast.success('Your Room has been Booked Please Check Your Email')
+        //     })
 
         // localStorage.setItem('bookedRomm', JSON.stringify(bookedRoomData))
     }
@@ -89,10 +94,21 @@ const Book = () => {
                         </div>
 
                     </div>
-                    <Link to='/home'>
-                        <button type="button" onClick={() => handleClick(_id)} className="px-8 py-3  my-4 font-semibold border rounded hover:bg-slate-50 hover:text-gray-800 border-gray-100 text-gray-100">Confirm Book</button>
 
-                    </Link>
+                    <div>
+                        <Elements stripe={stripePromise}>
+                            <CheckOutForm
+                                checkindate={checkindate}
+                                checkOutDate={checkOutDate}
+                                roomDetails={roomDetails} />
+                        </Elements>
+                    </div>
+
+                    <button type="button" onClick={() => handleClick(_id)} className="px-8 py-3  my-4 font-semibold border rounded hover:bg-slate-50 hover:text-gray-800 border-gray-100 text-gray-100">Confirm Book</button>
+
+                    <button type="button" className="px-8 py-3  my-4 font-semibold border rounded hover:bg-slate-50 hover:text-gray-800 border-gray-100 text-gray-100">Option</button>
+
+
                 </div>
             </div>
 
