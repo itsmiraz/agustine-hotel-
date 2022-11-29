@@ -15,7 +15,7 @@ const Bookings = () => {
     const { data: bookedRomm = [], isLoading, refetch } = useQuery({
         queryKey: ['bookedRoom', user?.email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/bookings?email=${user?.email}`, {
+            const res = await fetch(`https://hotel-web-server.vercel.app/bookings?email=${user?.email}`, {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('agustineToken')}`
                 }

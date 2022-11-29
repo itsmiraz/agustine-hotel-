@@ -72,7 +72,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/payment/:id',
-                loader:({params})=>fetch(`http://localhost:5000/room/${params.id}`),
+                loader:({params})=>fetch(`https://hotel-web-server.vercel.app/room/${params.id}`),
                 element:<PrivateRoute><Payment></Payment></PrivateRoute>
             },
             {

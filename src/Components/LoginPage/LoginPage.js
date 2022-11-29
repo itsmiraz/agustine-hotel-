@@ -62,7 +62,7 @@ const LoginPage = () => {
             name,
             email
         }
-        fetch(`http://localhost:5000/user/${email}`, {
+        fetch(`https://hotel-web-server.vercel.app/user/${email}`, {
             method: 'PUT',
             headers: {
                 'content-type':'application/json'

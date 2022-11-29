@@ -23,7 +23,7 @@ const CheckOutForm = ({ roomDetails,checkOutDate,checkindate  }) => {
     const { price, _id } = roomDetails;
 
     useEffect(() => {
-        fetch("http://localhost:5000/create-payment-intent", {
+        fetch("https://hotel-web-server.vercel.app/create-payment-intent", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -97,7 +97,7 @@ const CheckOutForm = ({ roomDetails,checkOutDate,checkindate  }) => {
                
             }
 
-            fetch('http://localhost:5000/payments', {
+            fetch('https://hotel-web-server.vercel.app/payments', {
                 method: 'POST',
                 headers: {
                     'content-type': "application/json",

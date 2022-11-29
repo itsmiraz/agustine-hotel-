@@ -8,7 +8,7 @@ const Allusers = () => {
     const { data: users, isLoading ,refetch} = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/user', {
+            const res = await fetch('https://hotel-web-server.vercel.app/user', {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('agustineToken')}`
                 }
@@ -24,7 +24,7 @@ const Allusers = () => {
 
 
     const handleMakeAdmin = id => {
-        fetch(`http://localhost:5000/user/admin/${id}`,{
+        fetch(`https://hotel-web-server.vercel.app/user/admin/${id}`,{
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',

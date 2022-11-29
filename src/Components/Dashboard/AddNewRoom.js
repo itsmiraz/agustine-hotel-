@@ -30,7 +30,7 @@ const AddNewRoom = () => {
                             capacity:data.capacity,
                             des:data.details,
                         }
-                        fetch('http://localhost:5000/room', {
+                        fetch('https://hotel-web-server.vercel.app/room', {
                                 method: 'POST',
                                 headers: {
                                     'content-type': 'application/json',
