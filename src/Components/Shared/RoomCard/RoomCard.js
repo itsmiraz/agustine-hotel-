@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaStar } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-
+import './RoomCard.css'
 const RoomCard = (props) => {
     const handleClick = () => {
         const roomDetail = (props.room)
@@ -12,8 +12,10 @@ const RoomCard = (props) => {
 
     return (
         <div>
-            <div style={{ height: '450px' }} className="card md:w-96 w-80  rounded z-0  bg-base-100 shadow-xl">
-                <figure><img src={image} alt="Shoes" /></figure>
+            <div style={{ height: '450px' }} className="card md:w-96 w-80 pb-2  rounded z-0  bg-gray-900 shadow-xl">
+                <div className='h-[250px] cards overflow-hidden'>
+                    <span className='inner'>   <img src={image} alt="Shoes" /></span>
+                </div>
                 <div className="card-body p-4">
                     <h2 className="card-title">
                         {name}
@@ -25,11 +27,13 @@ const RoomCard = (props) => {
                         <p>People Capacity: {capacity}</p>
                     </div>
                     <div className='flex justify-between'>
-                        <div className='flex items-center'>
-                            <FaStar className='mr-2'></FaStar> 4.5
-                        </div>
+
+
                         <div>
                             <Link to={`/rooms/${_id}`}><button className="px-2 mr-2 py-1  rounded-full border  text-white">Show Details</button></Link>
+
+                        </div>
+                        <div>
                             <Link to='/book'>
                                 <button onClick={handleClick} className="px-2 py-1  rounded-full bg-purple-600 text-white">Book Now!</button>
 
