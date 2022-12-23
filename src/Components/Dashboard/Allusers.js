@@ -5,7 +5,7 @@ import LoadingAnimation from '../Shared/LoadingAnimation/LoadingAnimation';
 
 const Allusers = () => {
 
-    const { data: users, isLoading ,refetch} = useQuery({
+    const { data: users=[], isLoading ,refetch} = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
             const res = await fetch('https://hotel-web-server.vercel.app/user', {

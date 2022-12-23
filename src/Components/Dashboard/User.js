@@ -3,7 +3,8 @@ import { useContext } from 'react';
 import { AuthContext } from '../../Context/AuthContext/UserContext';
 
 const User = () => {
-    const {user} = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
+    console.log(user)
     return (
         <div>
             <div className=' text-center  pb-20 z-0 drop-shadow-lg p-5'>

@@ -4,7 +4,7 @@ import ReactDatePicker from 'react-datepicker';
 import './Book.css'
 import "react-datepicker/dist/react-datepicker.css";
 import toast from 'react-hot-toast';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../../Context/AuthContext/UserContext';
 import { Elements } from '@stripe/react-stripe-js';
@@ -20,7 +20,7 @@ const Book = () => {
     const data = localStorage.getItem('room-detail')
     const roomDetails = JSON.parse(data)
     const { image, des, price, name, _id } = roomDetails
-
+    const navigate = useNavigate()
     const [checkindate, setcheckindate] = useState(null)
     const [checkOutDate, setCheckOutDate] = useState(null)
 
@@ -33,19 +33,20 @@ const Book = () => {
             email: user.email,
             room: roomDetails,
         }
-        // fetch('https://hotel-web-server.vercel.app/orders', {
-        //     method: 'POST',
-        //     headers: {
-        //         'content-type': 'application/json'
-        //     },
-        //     body: JSON.stringify(bookedRoomData)
+        fetch('https://hotel-web-server.vercel.app/orders', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(bookedRoomData)
 
-        // })
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         console.log(data);
-        //         toast.success('Your Room has been Booked Please Check Your Email')
-        //     })
+        })
+            .then(res => res.json())
+            .then(data => {
+                // console.log(data);
+                navigate('/dashboard/booking')
+                toast.success('Your Room has been Booked Please Check Your Email')
+            })
 
         // localStorage.setItem('bookedRomm', JSON.stringify(bookedRoomData))
     }
@@ -96,17 +97,17 @@ const Book = () => {
                     </div>
 
                     <div>
-                        <Elements stripe={stripePromise}>
+                        {/* <Elements stripe={stripePromise}>
                             <CheckOutForm
                                 checkindate={checkindate}
                                 checkOutDate={checkOutDate}
                                 roomDetails={roomDetails} />
-                        </Elements>
+                        </Elements> */}
                     </div>
 
                     <button type="button" onClick={() => handleClick(_id)} className="px-8 py-3  my-4 font-semibold border rounded hover:bg-slate-50 hover:text-gray-800 border-gray-100 text-gray-100">Confirm Book</button>
 
-                    <button type="button" className="px-8 py-3  my-4 font-semibold border rounded hover:bg-slate-50 hover:text-gray-800 border-gray-100 text-gray-100">Option</button>
+                    {/* <button type="button" className="px-8 py-3  my-4 font-semibold border rounded hover:bg-slate-50 hover:text-gray-800 border-gray-100 text-gray-100">Option</button> */}
 
 
                 </div>

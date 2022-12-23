@@ -6,7 +6,7 @@
     "@heroicons/react": "^2.0.12",
     "@stripe/react-stripe-js": "^1.15.0",
     "@stripe/stripe-js": "^1.44.1",
-    "@tanstack/react-query": "^4.16.1",
+    "@tanstack/react-query": "^4.20.4",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
     "@testing-library/user-event": "^13.2.1",
@@ -23,7 +23,7 @@
     "react-iframe": "^1.8.5",
     "react-router-dom": "^6.4.2",
     "react-scripts": "5.0.1",
-    "react-spinners": "^0.13.6",
+    "react-spinners": "^0.13.7",
     "web-vitals": "^2.1.0"
   },
   "scripts": {
